@@ -1,44 +1,52 @@
-# PrimeFaces Showcase
+# Documentación de la API: Gestión de Usuarios
 
-![PrimeFaces icon](https://www.primefaces.org/wp-content/uploads/2016/10/prime_logo_new.png)
+<!-- TOC -->
+* [Documentación de la API: Gestión de Usuarios](#documentación-de-la-api-gestión-de-usuarios)
+  * [Introducción](#introducción)
+  * [Endpoints](#endpoints)
+    * [1. Obtener Lista de Usuarios](#1-obtener-lista-de-usuarios)
+<!-- TOC -->
 
-### Getting Started
+## Introducción
+- **Versión de la API**: v1.0
+- **Base URL**: `https://api.tu-dominio.com/v1`
+- **Autenticación**: JWT Bearer Token (excepto en `/auth/login`)
+- **Formato de Respuestas**: JSON
+- **Códigos de Estado Comunes**:
+    - 200 OK
+    - 201 Created
+    - 400 Bad Request
+    - 401 Unauthorized
+    - 403 Forbidden
+    - 404 Not Found
+    - 500 Internal Server Error
 
-Deployable version of **PrimeFaces Showcase** war file can be downloaded manually or build it from sources.
+## Endpoints
 
-##### Prebuilt war
-
-For a full list of the available downloads, please visit the [download page](http://www.primefaces.org/downloads). Scroll down to showcase for war file link.
-
-##### Build from sources
-
-```
-git clone https://github.com/primefaces/showcase-facelift.git
-cd showcase-facelift
-mvn clean                  -- clean temp files from target folder
-mvn package                -- create war file (under target directory)
-mvn jetty:run              -- run showcase project locally
-```
-
-##### Run from local sources
-
-```
-mvn clean jetty:run
-```
-
-[http://localhost:8080/showcase/](http://localhost:8080/showcase)
-
-### Documentation
-
-User Guide is available at [documentation](http://www.primefaces.org/documentation) page along with other additional resoures.
-
-### Contribution
-
-Visit [Contribution Wiki](https://github.com/primefaces/primefaces/wiki/Contributing-to-PrimeFaces) page for the detailed information.
-
-### License
-
-Licensed under the Apache License, Version 2.0 (the "License") [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
-
-probando 7777
-
+### 1. Obtener Lista de Usuarios
+- **Método HTTP**: GET
+- **Path**: `/usuarios`
+- **Descripción**: Devuelve una lista paginada de usuarios.
+- **Parámetros**:
+    - **Query Parameters**:
+        - `page` (Integer, opcional, default: 1) — Página actual
+        - `size` (Integer, opcional, default: 10) — Elementos por página
+        - `filtro` (String, opcional) — Búsqueda por nombre o email sdfd
+- **Respuestas**:
+    - **200 OK**
+      ```json
+      {
+        "content": [
+          {
+            "id": 1,
+            "nombre": "Juan Pérez",
+            "email": "juan@example.com",
+            "activo": true
+          }
+        ],
+        "page": 1,
+        "size": 10,
+        "totalElements": 45
+      }
+      
+modifico
